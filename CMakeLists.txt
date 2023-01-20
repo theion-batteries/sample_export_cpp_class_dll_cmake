@@ -28,7 +28,7 @@ endif()
 add_subdirectory(dependencies)
 # includes
 include_directories(${PROJECT_SOURCE_DIR}/includes/)
-include_directories(${PROJECT_SOURCE_DIR}/dependencies)
+include_directories(${PROJECT_SOURCE_DIR}/dependencies/git_submodule_depA/)
 
 # add all source *.cpp : change repo name
 file(GLOB all_SRCS

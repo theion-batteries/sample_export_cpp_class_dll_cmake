@@ -1,1 +1,3 @@
 # documentation
+
+run doxygen
