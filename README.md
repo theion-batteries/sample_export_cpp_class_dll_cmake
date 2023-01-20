@@ -13,6 +13,7 @@ git_root_
      |_ tests/
      |_ cmake/ 
      |_ scripts/
+     |_ pkg/
 ```
 
 # src
@@ -31,3 +32,5 @@ place your tests here
 place external .cmake here
 # scripts
 optional: place any scripts here like python or bash
+# pkg
+optional: generate installer pkg here
