@@ -34,6 +34,7 @@ file(GLOB all_SRCS
 
 # make the exec: change project name
 add_executable(${project_name} ${all_SRCS})
+#set_target_properties()
 
 # link againt library
 target_link_libraries(${project_name} ClassLib
@@ -44,3 +45,11 @@ add_custom_command(TARGET ${project_name} POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:${project_name}> $<TARGET_FILE_DIR:${project_name}>
   COMMAND_EXPAND_LISTS
   )
+# install targets: exe dlls in debug config
+install(TARGETS ${project_name} ClassLib
+CONFIGURATIONS Debug
+RUNTIME DESTINATION bin/Debug
+)
+
+
+
