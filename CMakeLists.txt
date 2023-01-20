@@ -9,8 +9,11 @@
 
 cmake_minimum_required(VERSION 3.5.0)
 
-# project name and version: change project name
+# project name, exec and lib
 set(project_name useClassLib)
+set(library_name ClassLib)
+set(executable_name test_app)
+
 project(${project_name} VERSION "1.0")
 
 # set the C++ standard: 20 is set
@@ -33,20 +36,20 @@ file(GLOB all_SRCS
     )
 
 # make the exec: change project name
-add_executable(${project_name} ${all_SRCS})
+add_executable(${executable_name} ${all_SRCS})
 #set_target_properties()
 
 # link againt library
-target_link_libraries(${project_name} ClassLib
+target_link_libraries(${executable_name} ${library_name}
 
 )
 # copy lib/ dlls to exe folder
-add_custom_command(TARGET ${project_name} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:${project_name}> $<TARGET_FILE_DIR:${project_name}>
+add_custom_command(TARGET ${executable_name} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:${executable_name}> $<TARGET_FILE_DIR:${executable_name}>
   COMMAND_EXPAND_LISTS
   )
 # install targets: exe dlls in debug config
-install(TARGETS ${project_name} ClassLib
+install(TARGETS ${executable_name} ${library_name}
 CONFIGURATIONS Debug
 RUNTIME DESTINATION bin/Debug
 )
